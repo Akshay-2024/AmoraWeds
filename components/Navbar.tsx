@@ -5,483 +5,539 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { name: "Home",    href: "/" },
+  { name: "Home", href: "/" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Works",   href: "/demos" },
+  { name: "Works", href: "/demos" },
   { name: "Reviews", href: "/reviews" },
   { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
-  const [open, setOpen]         = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname                = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // close drawer on route change
   useEffect(() => { setOpen(false); }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+    return () => { document.body.style.overflow = "auto"; };
+  }, [open]);
 
   return (
     <>
-      <nav className={`amoera-nav ${scrolled ? "nav--scrolled" : ""}`}>
-        <div className="nav-inner">
+      <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+        {/* Decorative top accent line */}
+        <div className="navbar-topline" />
+
+        <div className="navbar-inner">
 
           {/* ── Logo ── */}
-          <Link href="/" className="nav-logo" aria-label="AmoeraWeds home">
-            <span className="logo-amoera">Amora</span>
-            <span className="logo-weds">Weds</span>
+          <Link href="/" className="logo" aria-label="AmoraWeds Home">
+            <span className="logo-ornament" aria-hidden="true">❧</span>
+            <span className="logo-text">
+              <span className="logo-amora">Amora</span><span className="logo-weds">Weds</span>
+            </span>
           </Link>
 
-          {/* ── Desktop links ── */}
+          {/* ── Desktop Links ── */}
           <ul className="nav-links" role="list">
-            {NAV_ITEMS.map(({ name, href }) => {
-              const active = pathname === href;
+            {NAV_ITEMS.map((item) => {
+              const active = pathname === item.href;
               return (
-                <li key={name}>
+                <li key={item.name}>
                   <Link
-                    href={href}
+                    href={item.href}
                     className={`nav-link ${active ? "nav-link--active" : ""}`}
                   >
-                    {name}
-                    <span className="nav-link-underline" aria-hidden="true" />
+                    {item.name}
+                    <span className="nav-link-dot" aria-hidden="true" />
                   </Link>
                 </li>
               );
             })}
           </ul>
 
+          
 
           {/* ── Hamburger ── */}
           <button
-            className={`nav-burger ${open ? "nav-burger--open" : ""}`}
+            className={`hamburger ${open ? "hamburger--open" : ""}`}
             onClick={() => setOpen(!open)}
-            aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
           >
-            <span className="burger-bar burger-bar-1" />
-            <span className="burger-bar burger-bar-2" />
-            <span className="burger-bar burger-bar-3" />
+            <span className="ham-bar" />
+            <span className="ham-bar" />
+            <span className="ham-bar" />
           </button>
+
         </div>
       </nav>
 
-      {/* ── Mobile drawer ── */}
-      <div
-        className={`mobile-overlay ${open ? "mobile-overlay--open" : ""}`}
-        onClick={() => setOpen(false)}
-        aria-hidden="true"
-      />
+      {/* ── Mobile Drawer ── */}
+      {open && (
+        <>
+          <div
+            className="drawer-overlay"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
 
-      <div
-        className={`mobile-drawer ${open ? "mobile-drawer--open" : ""}`}
-        aria-hidden={!open}
-      >
-        {/* Decorative petals */}
-        <div className="drawer-petals" aria-hidden="true">
-          {[...Array(6)].map((_, i) => (
-            <span key={i} className={`drawer-petal dp-${i + 1}`} />
-          ))}
-        </div>
+          <aside className="drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
 
-        <div className="drawer-logo">
-          <span className="logo-amoera">Amoera</span>
-          <span className="logo-weds">Weds</span>
-        </div>
+            {/* Decorative blobs */}
+            <div className="drawer-blob drawer-blob--1" aria-hidden="true" />
+            <div className="drawer-blob drawer-blob--2" aria-hidden="true" />
 
-        <div className="drawer-divider">
-          <span className="drawer-leaf">❧</span>
-        </div>
-
-        <ul className="drawer-links" role="list">
-          {NAV_ITEMS.map(({ name, href }, i) => {
-            const active = pathname === href;
-            return (
-              <li
-                key={name}
-                className="drawer-link-wrap"
-                style={{ animationDelay: `${i * 0.07 + 0.1}s` }}
+            {/* Head */}
+            <div className="drawer-head">
+              <Link href="/" className="logo" onClick={() => setOpen(false)}>
+                <span className="logo-ornament" aria-hidden="true">❧</span>
+                <span className="logo-text">
+                  <span className="logo-amora">Amora</span><span className="logo-weds">Weds</span>
+                </span>
+              </Link>
+              <button
+                className="close-btn"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
               >
-                <Link
-                  href={href}
-                  className={`drawer-link ${active ? "drawer-link--active" : ""}`}
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="drawer-link-dot" aria-hidden="true">✦</span>
-                  {name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                ✕
+              </button>
+            </div>
 
-      
-        <p className="drawer-tagline">
-          <em>Crafting timeless wedding websites</em>
-        </p>
-      </div>
+            {/* Divider */}
+            <div className="drawer-divider">
+              <span className="drawer-leaf" aria-hidden="true">❧</span>
+            </div>
+
+            {/* Links */}
+            <nav className="drawer-nav">
+              {NAV_ITEMS.map((item, i) => {
+                const active = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`drawer-link ${active ? "drawer-link--active" : ""}`}
+                    onClick={() => setOpen(false)}
+                    style={{ animationDelay: `${0.055 * i}s` }}
+                  >
+                    <span className="drawer-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="drawer-name">{item.name}</span>
+                    {active && <span className="drawer-active-mark" aria-hidden="true">◇</span>}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Footer */}
+            
+
+          </aside>
+        </>
+      )}
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
 
         :root {
-          --rose:        #c9728a;
-          --rose-light:  #f5e0e6;
-          --rose-pale:   #fdf4f6;
-          --gold:        #b8914a;
-          --gold-light:  #e8d5b0;
-          --ivory:       #fffaf5;
-          --text-dark:   #3a2c30;
-          --text-mid:    #7a5c64;
-          --text-soft:   #b89aa0;
+          --rose:       #c9728a;
+          --rose-light: #f5e0e6;
+          --rose-pale:  #fdf4f6;
+          --gold:       #b8914a;
+          --gold-light: #e8d5b0;
+          --ivory:      #fffaf5;
+          --blush:      #faeef2;
+          --text-dark:  #3a2c30;
+          --text-mid:   #7a5c64;
+          --text-soft:  #b89aa0;
         }
 
-        /* ─── Navbar shell ─── */
-        .amoera-nav {
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Navbar ── */
+        .navbar {
           position: sticky;
           top: 0;
           z-index: 100;
           width: 100%;
           font-family: 'Jost', sans-serif;
-          background: rgba(255, 250, 245, 0.85);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          background: rgba(255, 250, 245, 0.72);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid transparent;
-          transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+          transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .nav--scrolled {
+        .navbar--scrolled {
           background: rgba(255, 250, 245, 0.97);
-          border-bottom-color: var(--rose-light);
-          box-shadow: 0 4px 28px rgba(201, 114, 138, 0.08);
+          border-color: var(--rose-light);
+          box-shadow: 0 2px 28px rgba(201, 114, 138, 0.08);
         }
 
-        /* ─── Inner layout ─── */
-        .nav-inner {
-          max-width: 1180px;
+        /* thin gold-rose gradient line at very top */
+        .navbar-topline {
+          height: 2px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--rose-light) 25%,
+            var(--gold-light) 50%,
+            var(--rose-light) 75%,
+            transparent 100%
+          );
+        }
+
+        .navbar-inner {
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 0 2rem;
           height: 68px;
+          padding: 0 2rem;
           display: flex;
           align-items: center;
-          gap: 2.5rem;
+          justify-content: space-between;
+          gap: 1.25rem;
         }
 
-        /* ─── Logo ─── */
-        .nav-logo {
+        /* ── Logo ── */
+        .logo {
           text-decoration: none;
           display: flex;
-          align-items: baseline;
-          gap: 0;
+          align-items: center;
+          gap: 0.4rem;
           flex-shrink: 0;
-          margin-right: auto;
+          transition: opacity 0.25s;
         }
-        .logo-amoera {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1.65rem;
-          font-style: italic;
-          font-weight: 400;
-          color: var(--text-dark);
-          letter-spacing: 0.01em;
-          line-height: 1;
-        }
-        .logo-weds {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1.65rem;
-          font-style: italic;
-          font-weight: 600;
+        .logo:hover { opacity: 0.85; }
+
+        .logo-ornament {
           color: var(--rose);
-          letter-spacing: 0.01em;
-          line-height: 1;
+          font-size: 1rem;
+          opacity: 0.7;
+          transition: opacity 0.3s, transform 0.3s;
+        }
+        .logo:hover .logo-ornament {
+          opacity: 1;
+          transform: rotate(-15deg);
         }
 
-        /* ─── Desktop nav links ─── */
+        .logo-text {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.7rem;
+          font-style: italic;
+          line-height: 1;
+          letter-spacing: 0.01em;
+        }
+        .logo-amora { color: var(--text-dark); font-weight: 400; }
+        .logo-weds  { color: var(--rose);      font-weight: 600; }
+
+        /* ── Nav links ── */
         .nav-links {
+          list-style: none;
           display: flex;
           align-items: center;
-          gap: 0.25rem;
-          list-style: none;
-          padding: 0;
-          margin: 0;
+          gap: 0.2rem;
+          flex: 1;
+          justify-content: center;
         }
 
         .nav-link {
           position: relative;
-          display: inline-flex;
+          text-decoration: none;
+          color: var(--text-mid);
+          font-size: 0.875rem;
+          font-weight: 400;
+          letter-spacing: 0.04em;
+          padding: 0.5rem 1.05rem;
+          border-radius: 9999px;
+          transition: color 0.25s, background 0.25s;
+          display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 0.35rem 0.85rem;
-          font-size: 0.8rem;
-          font-weight: 400;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--text-mid);
-          text-decoration: none;
-          transition: color 0.22s;
+          gap: 3px;
         }
-        .nav-link:hover,
-        .nav-link--active {
-          color: var(--rose);
-        }
+        .nav-link:hover      { color: var(--rose); background: var(--rose-pale); }
+        .nav-link--active    { color: var(--rose); background: var(--rose-pale); }
 
-        .nav-link-underline {
+        /* animated dot */
+        .nav-link-dot {
           display: block;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%) scaleX(0);
-          width: calc(100% - 1.7rem);
-          height: 1.5px;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
           background: var(--rose);
-          border-radius: 9999px;
-          transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-          transform-origin: center;
+          opacity: 0;
+          transform: scale(0);
+          transition: opacity 0.25s, transform 0.25s;
         }
-        .nav-link:hover .nav-link-underline,
-        .nav-link--active .nav-link-underline {
-          transform: translateX(-50%) scaleX(1);
+        .nav-link--active .nav-link-dot,
+        .nav-link:hover .nav-link-dot {
+          opacity: 1;
+          transform: scale(1);
         }
 
-        /* ─── Desktop CTA ─── */
+        /* ── CTA ── */
         .nav-cta {
           flex-shrink: 0;
-          font-family: 'Jost', sans-serif;
-          font-size: 0.75rem;
-          font-weight: 500;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          padding: 0.65rem 1.6rem;
-          border-radius: 9999px;
           text-decoration: none;
-          color: #fff;
+          font-family: 'Jost', sans-serif;
+          font-size: 0.78rem;
+          font-weight: 500;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          padding: 0.6rem 1.5rem;
+          border-radius: 9999px;
           background: linear-gradient(135deg, var(--rose) 0%, #b05575 100%);
+          color: #fff;
           box-shadow: 0 4px 18px rgba(201, 114, 138, 0.30);
-          transition: box-shadow 0.3s ease, transform 0.3s ease;
+          transition: transform 0.25s, box-shadow 0.25s;
         }
         .nav-cta:hover {
-          box-shadow: 0 8px 28px rgba(201, 114, 138, 0.46);
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 26px rgba(201, 114, 138, 0.45);
         }
 
-        /* ─── Hamburger ─── */
-        .nav-burger {
+        /* ── Hamburger ── */
+        .hamburger {
           display: none;
           flex-direction: column;
           justify-content: center;
           gap: 5px;
-          width: 36px;
-          height: 36px;
-          background: none;
+          width: 42px;
+          height: 42px;
+          padding: 10px;
+          background: #fff;
           border: 1px solid var(--rose-light);
-          border-radius: 10px;
+          border-radius: 12px;
           cursor: pointer;
-          padding: 8px;
+          box-shadow: 0 2px 10px rgba(201,114,138,0.10);
           flex-shrink: 0;
-          transition: border-color 0.25s, background 0.25s;
         }
-        .nav-burger:hover {
-          background: var(--rose-pale);
-          border-color: var(--rose);
-        }
-
-        .burger-bar {
+        .ham-bar {
           display: block;
           width: 100%;
           height: 1.5px;
           background: var(--text-dark);
           border-radius: 9999px;
+          transition: transform 0.3s ease, opacity 0.3s ease;
           transform-origin: center;
-          transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s;
         }
+        .hamburger--open .ham-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger--open .ham-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger--open .ham-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* X state */
-        .nav-burger--open .burger-bar-1 { transform: translateY(6.5px) rotate(45deg); }
-        .nav-burger--open .burger-bar-2 { transform: scaleX(0); opacity: 0; }
-        .nav-burger--open .burger-bar-3 { transform: translateY(-6.5px) rotate(-45deg); }
-
-        /* ─── Mobile overlay ─── */
-        .mobile-overlay {
-          display: none;
+        /* ── Overlay ── */
+        .drawer-overlay {
           position: fixed;
           inset: 0;
-          z-index: 98;
-          background: rgba(58, 44, 48, 0);
-          pointer-events: none;
-          transition: background 0.35s ease;
-        }
-        .mobile-overlay--open {
-          background: rgba(58, 44, 48, 0.45);
-          pointer-events: auto;
+          background: rgba(58, 44, 48, 0.4);
+          backdrop-filter: blur(3px);
+          -webkit-backdrop-filter: blur(3px);
+          z-index: 120;
+          animation: fadeIn 0.3s ease;
         }
 
-        /* ─── Mobile drawer ─── */
-        .mobile-drawer {
+        /* ── Drawer ── */
+        .drawer {
           position: fixed;
           top: 0;
           right: 0;
-          z-index: 99;
-          width: min(340px, 90vw);
+          width: min(360px, 92vw);
           height: 100dvh;
           background: var(--ivory);
-          border-left: 1px solid var(--rose-light);
-          padding: 2.5rem 2rem 2.5rem;
+          z-index: 130;
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
-          gap: 0;
-          transform: translateX(100%);
-          transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-          overflow: hidden;
-        }
-        .mobile-drawer--open {
-          transform: translateX(0);
+          overflow-y: auto;
+          animation: slideIn 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+          border-left: 1px solid var(--rose-light);
+          box-shadow: -10px 0 50px rgba(58, 44, 48, 0.12);
         }
 
-        /* petals inside drawer */
-        .drawer-petals { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-        .drawer-petal {
+        .drawer-blob {
           position: absolute;
-          border-radius: 150% 0 150% 0;
-          opacity: 0.4;
+          pointer-events: none;
+          z-index: 0;
+          border-radius: 50%;
         }
-        .drawer-petal:nth-child(even) { background: var(--gold-light); border-radius: 0 150% 0 150%; }
-        .drawer-petal:nth-child(odd)  { background: var(--rose-light); }
-        .dp-1 { width:40px; height:52px; top:-10px;  right:-8px;  transform: rotate(20deg);  }
-        .dp-2 { width:28px; height:36px; top:30px;   right:20px;  transform: rotate(-30deg); }
-        .dp-3 { width:22px; height:28px; bottom:80px; left:-6px;  transform: rotate(50deg);  }
-        .dp-4 { width:34px; height:44px; bottom:30px; right:10px; transform: rotate(-15deg); }
-        .dp-5 { width:18px; height:24px; top:45%;    left:10px;  transform: rotate(70deg);  }
-        .dp-6 { width:26px; height:32px; top:60%;    right:5px;  transform: rotate(-45deg); }
-
-        .drawer-logo {
-          position: relative;
-          z-index: 1;
-          margin-bottom: 0.5rem;
+        .drawer-blob--1 {
+          width: 200px; height: 200px;
+          background: var(--rose-light);
+          opacity: 0.3;
+          top: -70px; right: -70px;
+        }
+        .drawer-blob--2 {
+          width: 130px; height: 130px;
+          background: var(--gold-light);
+          opacity: 0.22;
+          bottom: 100px; left: -50px;
+          border-radius: 0 150% 0 150%;
         }
 
-        .drawer-divider {
+        .drawer-head {
           position: relative;
           z-index: 1;
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          padding: 1.6rem 1.6rem 1.2rem;
+        }
+
+        .close-btn {
+          width: 38px;
+          height: 38px;
+          border: 1px solid var(--rose-light);
+          border-radius: 10px;
+          background: #fff;
+          cursor: pointer;
+          font-size: 0.9rem;
+          color: var(--text-mid);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .close-btn:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+
+        .drawer-divider {
+          display: flex;
+          align-items: center;
           gap: 0.6rem;
-          margin: 0.8rem 0 2rem;
-          width: 100%;
+          margin: 0 1.6rem 0.75rem;
+          position: relative;
+          z-index: 1;
         }
         .drawer-divider::before,
         .drawer-divider::after {
           content: '';
-          display: block;
           flex: 1;
           height: 1px;
-          background: var(--gold-light);
+          background: var(--rose-light);
         }
-        .drawer-leaf { color: var(--rose); font-size: 1rem; }
+        .drawer-leaf { color: var(--rose); font-size: 0.95rem; }
 
-        /* ─── Drawer links ─── */
-        .drawer-links {
-          position: relative;
-          z-index: 1;
-          list-style: none;
-          padding: 0;
-          margin: 0 0 2.5rem;
-          width: 100%;
+        /* ── Drawer nav ── */
+        .drawer-nav {
+          flex: 1;
+          padding: 0.75rem 1rem;
           display: flex;
           flex-direction: column;
           gap: 0.2rem;
-        }
-
-        .drawer-link-wrap {
-          opacity: 0;
-          transform: translateX(20px);
-          animation: none;
-        }
-        .mobile-drawer--open .drawer-link-wrap {
-          animation: slideIn 0.4s ease forwards;
-        }
-        @keyframes slideIn {
-          to { opacity: 1; transform: translateX(0); }
+          position: relative;
+          z-index: 1;
         }
 
         .drawer-link {
+          text-decoration: none;
           display: flex;
           align-items: center;
-          gap: 0.8rem;
-          padding: 0.85rem 0;
+          gap: 0.9rem;
+          padding: 0.9rem 1rem;
+          border-radius: 14px;
+          transition: background 0.25s, transform 0.25s;
+          animation: linkReveal 0.38s ease both;
+        }
+        .drawer-link:hover { background: var(--blush); transform: translateX(4px); }
+        .drawer-link--active { background: var(--rose-pale); }
+
+        .drawer-num {
           font-family: 'Cormorant Garamond', serif;
-          font-size: 1.55rem;
-          font-weight: 300;
-          color: var(--text-mid);
-          text-decoration: none;
-          border-bottom: 1px solid var(--rose-light);
-          width: 100%;
-          transition: color 0.22s, padding-left 0.22s;
-        }
-        .drawer-link:hover,
-        .drawer-link--active {
-          color: var(--rose);
-          padding-left: 0.4rem;
-        }
-        .drawer-link-dot {
-          font-size: 0.55rem;
-          color: var(--rose);
-          opacity: 0;
-          transition: opacity 0.22s;
-          flex-shrink: 0;
-        }
-        .drawer-link:hover .drawer-link-dot,
-        .drawer-link--active .drawer-link-dot {
-          opacity: 1;
+          font-style: italic;
+          font-size: 0.78rem;
+          color: var(--text-soft);
+          min-width: 20px;
+          line-height: 1;
         }
 
-        /* ─── Drawer CTA ─── */
-        .drawer-cta {
+        .drawer-name {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.35rem;
+          font-weight: 500;
+          color: var(--text-dark);
+          flex: 1;
+          letter-spacing: 0.02em;
+        }
+        .drawer-link--active .drawer-name { color: var(--rose); }
+
+        .drawer-active-mark {
+          color: var(--rose);
+          font-size: 0.65rem;
+          opacity: 0.65;
+        }
+
+        /* ── Drawer footer ── */
+        .drawer-footer {
+          padding: 1.25rem 1.6rem 1.75rem;
+          border-top: 1px solid var(--rose-light);
+          display: flex;
+          flex-direction: column;
+          gap: 0.9rem;
+          align-items: flex-start;
           position: relative;
           z-index: 1;
-          font-family: 'Jost', sans-serif;
-          font-size: 0.78rem;
-          font-weight: 500;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          padding: 0.9rem 2.2rem;
-          border-radius: 9999px;
-          text-decoration: none;
-          color: #fff;
-          background: linear-gradient(135deg, var(--rose) 0%, #b05575 100%);
-          box-shadow: 0 6px 22px rgba(201, 114, 138, 0.32);
-          transition: transform 0.25s, box-shadow 0.25s;
-          align-self: flex-start;
-        }
-        .drawer-cta:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(201, 114, 138, 0.44);
         }
 
         .drawer-tagline {
-          position: relative;
-          z-index: 1;
-          margin-top: auto;
-          padding-top: 2rem;
           font-family: 'Cormorant Garamond', serif;
-          font-size: 0.95rem;
-          color: var(--text-soft);
           font-style: italic;
+          font-size: 0.92rem;
+          color: var(--text-soft);
+          font-weight: 300;
         }
 
-        /* ─── Responsive show/hide ─── */
+        .drawer-wa {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          font-family: 'Jost', sans-serif;
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          padding: 0.6rem 1.3rem;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, #25d366 0%, #128c4e 100%);
+          color: #fff;
+          box-shadow: 0 4px 16px rgba(37, 211, 102, 0.28);
+          transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .drawer-wa:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(37, 211, 102, 0.40);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes slideIn {
+          from { transform: translateX(100%); }
+          to   { transform: translateX(0); }
+        }
+        @keyframes linkReveal {
+          from { opacity: 0; transform: translateX(14px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 860px) {
-          .nav-links, .nav-cta { display: none; }
-          .nav-burger           { display: flex; }
-          .mobile-overlay       { display: block; }
+          .nav-links { display: none; }
+          .nav-cta   { display: none; }
+          .hamburger { display: flex; }
         }
 
-        @media (max-width: 500px) {
-          .nav-inner { padding: 0 1.25rem; height: 60px; }
-          .logo-amoera, .logo-weds { font-size: 1.45rem; }
+        @media (max-width: 520px) {
+          .navbar-inner { height: 60px; padding: 0 1rem; }
+          .logo-text    { font-size: 1.5rem; }
         }
       `}</style>
     </>
