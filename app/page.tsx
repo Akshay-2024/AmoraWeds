@@ -7,9 +7,8 @@ async function getReviews() {
     await connectDB();
 
     const reviews = await Review.find()
-      .sort({ createdAt: -1 })
-      .limit(3)
-      .lean();
+  .sort({ createdAt: -1 })
+  .limit(3);
 
     return JSON.parse(
       JSON.stringify(reviews)
