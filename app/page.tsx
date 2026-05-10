@@ -1,22 +1,27 @@
 import Hero from "@/components/Hero";
 import Link from "next/link";
-
+import connectDB from "@/lib/mongodb";
+import Review from "@/models/Review";
 async function getReviews() {
   try {
-    const res = await fetch(
-      "http://localhost:3000/api/reviews",
-      {
-        cache: "no-store",
-      }
+    await connectDB();
+
+    const reviews = await Review.find()
+      .sort({ createdAt: -1 })
+      .limit(3)
+      .lean();
+
+    return JSON.parse(
+      JSON.stringify(reviews)
     );
-
-    const data = await res.json();
-
-    return Array.isArray(data) ? data : [];
   } catch (error) {
+    console.log(error);
+
     return [];
   }
 }
+     
+ 
 
 export default async function Home() {
   const reviews = await getReviews();

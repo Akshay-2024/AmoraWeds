@@ -1,12 +1,25 @@
 import ReviewForm from "@/components/ReviewForm";
+import connectDB from "@/lib/mongodb";
+import Review from "@/models/Review";
 
 async function getReviews() {
-  const res = await fetch("http://localhost:3000/api/reviews", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return Array.isArray(data) ? data : [];
+  try {
+    await connectDB();
+
+    const reviews = await Review.find()
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return JSON.parse(
+      JSON.stringify(reviews)
+    );
+  } catch (error) {
+    console.log(error);
+
+    return [];
+  }
 }
+ 
 
 export default async function ReviewsPage() {
   const reviews = await getReviews();
