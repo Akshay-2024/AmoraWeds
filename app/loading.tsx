@@ -94,13 +94,28 @@ export default function Loading() {
         /* ── Shell ── */
         .amoera-loading {
           font-family: 'Jost', sans-serif;
-          min-height: 100vh;
+
+          position: fixed;
+          inset: 0;
+
+          width: 100%;
+          height: 100dvh;
+          min-height: 100dvh;
+
           background: var(--ivory);
+
           display: flex;
           align-items: center;
           justify-content: center;
-          position: relative;
+
           overflow: hidden;
+
+          z-index: 999999;
+
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+
+          will-change: transform;
         }
 
         /* ── Background rings ── */
@@ -176,6 +191,9 @@ export default function Loading() {
           align-items: center;
           justify-content: center;
           margin-bottom: 2.2rem;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          will-change: transform;
         }
 
         .spinner-svg {
@@ -274,6 +292,39 @@ export default function Loading() {
           0%, 80%, 100% { opacity: 0.2; transform: translateY(0);    }
           40%            { opacity: 1;   transform: translateY(-5px);  }
         }
+
+        @media (max-width: 768px) {
+
+  .load-ring-1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .load-ring-2 {
+    width: 220px;
+    height: 220px;
+  }
+
+  .load-ring-3 {
+    width: 130px;
+    height: 130px;
+  }
+
+  .load-logo {
+    font-size: 2rem;
+  }
+
+  .load-tagline {
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .spinner-wrap {
+    width: 82px;
+    height: 82px;
+  }
+}
       `}</style>
     </div>
   );

@@ -20,7 +20,7 @@ async function getReviews() {
   }
 }
      
- 
+ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const reviews = await getReviews();

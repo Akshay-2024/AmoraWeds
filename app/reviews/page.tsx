@@ -1,3 +1,4 @@
+import ReviewsClient from "@/components/ReviewsClient";
 import ReviewForm from "@/components/ReviewForm";
 import connectDB from "@/lib/mongodb";
 import Review from "@/models/Review";
@@ -19,6 +20,7 @@ async function getReviews() {
   }
 }
  
+export const dynamic = "force-dynamic";
 
 export default async function ReviewsPage() {
   const reviews = await getReviews();
@@ -58,28 +60,7 @@ export default async function ReviewsPage() {
               <span className="col-heading-accent">✦</span> What They Said
             </h2>
 
-            {reviews.map((review: any) => (
-              <div key={review._id} className="review-card">
-                <div className="review-quote">"</div>
-                <p className="review-message">{review.message}</p>
-                <div className="review-footer">
-                  <div className="review-avatar">
-                    {review.name?.charAt(0) ?? "?"}
-                  </div>
-                  <div className="review-meta">
-                    <p className="review-name">{review.name}</p>
-                    <div className="review-stars">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <span key={i} className={i < review.rating ? "star star--filled" : "star"}>
-                          ★
-                        </span>
-                      ))}
-                      <span className="review-score">{review.rating}/5</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <ReviewsClient reviews={reviews} />
 
             {reviews.length === 0 && (
               <div className="empty-state">
