@@ -36,8 +36,21 @@ export const packages = [
     ],
 
     demos: [
-      "https://wedding-invitation1-rosy.vercel.app/",
-      "https://wedding-invitation4.netlify.app/",
+      {
+        link:
+          "https://wedding-invitation1-rosy.vercel.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+      },
+
+      {
+        link:
+          "https://wedding-invitation4.netlify.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8",
+      },
     ],
   },
 
@@ -81,15 +94,30 @@ export const packages = [
     ],
 
     demos: [
-      "https://asuhar-aaliya.vercel.app/",
-      "https://wedding-invitation5.netlify.app/",
+      {
+        link:
+          "https://asuhar-aaliya.vercel.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1519741497674-611481863552",
+      },
+
+      {
+        link:
+          "https://wedding-invitation5.netlify.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1520854221256-17451cc331bf",
+      },
     ],
   },
 
   {
     id: 3,
 
-    title: "Premium Tier",
+    title:
+      "Premium Tier",
+
     slug: "premium",
 
     subtitle:
@@ -104,7 +132,8 @@ export const packages = [
     delivery:
       "3-5 Days",
 
-    themes: "2 Custom Themes",
+    themes:
+      "2 Custom Themes",
 
     features: [
       "Animated Invitation Opening",
@@ -128,8 +157,21 @@ export const packages = [
     ],
 
     demos: [
-      "https://wedding-invitation3.vercel.app/",
-      "https://wedding-invitation6.netlify.app/",
+      {
+        link:
+          "https://wedding-invitation3.vercel.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1507504031003-b417219a0fde",
+      },
+
+      {
+        link:
+          "https://wedding-invitation6.netlify.app/",
+
+        image:
+          "https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21d",
+      },
     ],
   },
 ];

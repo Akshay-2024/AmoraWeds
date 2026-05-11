@@ -97,17 +97,23 @@ export default function DemoPage() {
               <div className="demos-grid">
                 {pkg.demos.map((demo, i) => (
                   <a
-                    key={demo}
-                    href={demo}
+                    key={demo.link}
+                    href={demo.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="demo-link-card"
+                    
                   >
+                    <img
+                      src={demo.image}
+                      alt="Wedding Demo"
+                      className="w-full h-[260px] object-cover rounded-3xl"
+/>
                     <div className="demo-link-top">
                       <span className="demo-link-num">0{i + 1}</span>
                       <span className="demo-link-badge">Live Demo</span>
                     </div>
-                    <p className="demo-link-url">{demo}</p>
+                   
                     <div className="demo-link-btn">
                       Open Demo <span className="demo-link-arrow" aria-hidden="true">→</span>
                     </div>
