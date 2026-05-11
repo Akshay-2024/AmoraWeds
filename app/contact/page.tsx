@@ -56,8 +56,8 @@ export default function ContactPage() {
                   <div className="info-icon">✉</div>
                   <div className="info-text">
                     <p className="info-label">Email</p>
-                    <a href="mailto:amoeraweds@gmail.com" className="info-value info-link">
-                      amoeraweds@gmail.com
+                    <a href="mailto:amoeraweds4@gmail.com" className="info-value info-link">
+                      amoeraweds4@gmail.com
                     </a>
                   </div>
                 </div>
@@ -69,8 +69,7 @@ export default function ContactPage() {
                   <div className="info-text">
                     <p className="info-label">Address</p>
                     <p className="info-value">
-                      University College of Engineering<br />
-                      Kariavattom, TVM,<br />
+                      Thiruvananthapuram<br />
                       Kerala, India
                     </p>
                   </div>
@@ -99,7 +98,7 @@ export default function ContactPage() {
               </div>
               <div className="map-wrapper">
                 <iframe
-                  src="https://www.google.com/maps?q=University+College+of+Engineering+Kariavattom&output=embed"
+                  src="https://www.google.com/maps?q=Thiruvananthapuram&output=embed"
                   width="100%"
                   height="100%"
                   loading="lazy"

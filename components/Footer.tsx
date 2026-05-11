@@ -36,7 +36,7 @@ export default function Footer() {
             <div className="social-row" aria-label="Social links">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-btn">IG</a>
               <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-btn">WA</a>
-              <a href="mailto:amoeraweds@gmail.com" aria-label="Email" className="social-btn">✉</a>
+              <a href="mailto:amoeraweds4@gmail.com" aria-label="Email" className="social-btn">✉</a>
             </div>
           </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
             <ul className="contact-list">
               <li className="contact-item">
                 <span className="contact-icon" aria-hidden="true">✦</span>
-                <span>University College of Engineering<br />Kariavattom, TVM, Kerala</span>
+                <span>Thiruvananthapuram<br />Kerala</span>
               </li>
               <li className="contact-item">
                 <span className="contact-icon" aria-hidden="true">✆</span>
