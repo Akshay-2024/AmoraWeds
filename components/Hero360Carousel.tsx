@@ -11,7 +11,7 @@ const slides = [
   "/templates/1.png",
   "/templates/2.png",
   "/templates/3.png",
-  "/templates/1.png",
+  
 ];
 
 export default function Hero360Carousel() {
