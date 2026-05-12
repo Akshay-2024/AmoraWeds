@@ -116,10 +116,6 @@ button {
   position: relative;
   width: 100%;
   height: 100%;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
 }
 
 /* ============================= */
@@ -148,19 +144,17 @@ button {
     height 0.5s ease,
     opacity 0.5s ease;
 }
-.hero-360-card {
-  will-change: transform;
-}
+
 /* Active card */
 .hero-360-card.active {
-  width: 250px;
-  height: 500px;
+  width: 270px;
+  height: 520px;
 }
 
 /* Side cards */
 .hero-360-card.side {
-  width: 170px;
-  height: 360px;
+  width: 198px;
+  height: 414px;
   filter: brightness(0.92);
 }
 
