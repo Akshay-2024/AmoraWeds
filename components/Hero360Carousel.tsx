@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const slides = [
-  "/templates/1.jpg",
-  "/templates/2.jpg",
-  "/templates/3.jpg",
-  "/templates/4.jpg",
-  "/templates/5.jpg",
-  "/templates/6.jpg",
+  "/templates/1.png",
+  "/templates/2.png",
+  "/templates/3.png",
+  "/templates/4.png",
+  "/templates/5.png",
+  "/templates/6.png",
 ];
 
 export default function Hero360Carousel() {
@@ -60,39 +60,39 @@ export default function Hero360Carousel() {
                 isCenter ? "active" : ""
               }`}
               animate={{
-                x:
-                  position === 0
-                    ? 0
-                    : position > 0
-                    ? position * 120
-                    : position * 120,
+              x:
+                position === 0
+                  ? 0
+                  : position > 0
+                  ? position * 135
+                  : position * 135,
 
-                scale:
-                  position === 0
-                    ? 1
-                    : Math.abs(position) === 1
-                    ? 0.82
-                    : 0.64,
+              scale:
+                position === 0
+                  ? 1
+                  : Math.abs(position) === 1
+                  ? 0.72
+                  : 0.52,
 
-                rotateY: position * -45,
+              rotateY: position * -58,
 
-                z:
-                  position === 0
-                    ? 0
-                    : -220 * Math.abs(position),
+              z:
+                position === 0
+                  ? 0
+                  : -320 * Math.abs(position),
 
-                opacity:
-                  Math.abs(position) > 2
-                    ? 0
-                    : position === 0
-                    ? 1
-                    : 0.65,
+              opacity:
+                Math.abs(position) > 2
+                  ? 0
+                  : position === 0
+                  ? 1
+                  : 0.68,
 
-                filter:
-                  position === 0
-                    ? "blur(0px)"
-                    : "blur(1.5px)",
-              }}
+              filter:
+                position === 0
+                  ? "blur(0px)"
+                  : "blur(1.5px)",
+            }}
               transition={{
                 duration: 1,
                 ease: "easeInOut",

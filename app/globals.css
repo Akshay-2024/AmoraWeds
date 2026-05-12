@@ -46,24 +46,32 @@ button {
 /* ========================================= */
 /* HERO 360 */
 /* ========================================= */
-
 .hero360 {
   position: relative;
   padding: 120px 20px;
   overflow: hidden;
+
   background:
-    radial-gradient(circle at top,
+    radial-gradient(
+      circle at top,
       rgba(201,114,138,0.12),
-      transparent 45%),
+      transparent 45%
+    ),
     #fffaf5;
 }
 
+/* Glow */
+
 .hero360-glow {
   position: absolute;
+
   width: 900px;
   height: 900px;
+
   border-radius: 50%;
+
   background: rgba(201,114,138,0.12);
+
   filter: blur(140px);
 
   left: 50%;
@@ -72,9 +80,12 @@ button {
   transform: translate(-50%, -50%);
 }
 
+/* Header */
+
 .hero360-header {
   text-align: center;
   margin-bottom: 80px;
+
   position: relative;
   z-index: 5;
 }
@@ -88,17 +99,22 @@ button {
 
 .hero360-title {
   font-family: 'Cormorant Garamond', serif;
+
   font-size: clamp(3rem, 5vw, 5rem);
+
   line-height: 1.05;
   font-weight: 300;
+
   color: #3a2c30;
 }
+
+/* Stage */
 
 .hero360-stage {
   position: relative;
 
   width: 100%;
-  max-width: 900px;
+  max-width: 1250px;
 
   height: 560px;
 
@@ -108,43 +124,57 @@ button {
   justify-content: center;
   align-items: flex-end;
 
-  perspective: 2400px;
+  perspective: 2600px;
   transform-style: preserve-3d;
 }
+
+/* Cards */
 
 .hero360-card {
   position: absolute;
 
-  width: 190px;
-  height: 380px;
+  width: 165px;
+  height: 330px;
 
   border-radius: 28px;
 
   overflow: hidden;
 
+  left: 50%;
+  bottom: 0;
+
+  margin-left: -82px;
+
   transform-style: preserve-3d;
+
+  will-change: transform;
 
   box-shadow:
     0 25px 80px rgba(0,0,0,0.15);
 
-  will-change: transform;
-
-  left: 50%;
-  bottom: 0;
-
-  margin-left: -95px;
+  transition:
+    width 0.5s ease,
+    height 0.5s ease;
 }
+
+/* Center Card */
 
 .hero360-card.active {
-  width: 240px;
-  height: 500px;
+  width: 220px;
+  height: 460px;
 
-  margin-left: -120px;
+  margin-left: -110px;
+
+  z-index: 20;
 }
+
+/* Image */
 
 .hero360-image {
   object-fit: cover;
 }
+
+/* Overlay */
 
 .hero360-overlay {
   position: absolute;
@@ -158,8 +188,11 @@ button {
     );
 }
 
+/* Content */
+
 .hero360-content {
   position: absolute;
+
   bottom: 22px;
   left: 20px;
 
@@ -181,27 +214,39 @@ button {
   font-weight: 300;
 }
 
+/* Mobile */
+
 @media (max-width: 768px) {
 
+  .hero360 {
+    padding: 90px 10px;
+  }
+
   .hero360-stage {
-    height: 430px;
+    height: 420px;
+    max-width: 100%;
+    perspective: 1800px;
   }
 
   .hero360-card {
-    width: 130px;
-    height: 250px;
+    width: 120px;
+    height: 240px;
 
-    margin-left: -65px;
+    margin-left: -60px;
   }
 
   .hero360-card.active {
-    width: 180px;
-    height: 350px;
+    width: 170px;
+    height: 340px;
 
-    margin-left: -90px;
+    margin-left: -85px;
   }
 
   .hero360-title {
     font-size: 2.5rem;
+  }
+
+  .hero360-header {
+    margin-bottom: 50px;
   }
 }
