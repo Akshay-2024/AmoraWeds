@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react"; // icons from lucide AS
 
 const NAV_LINKS = [
   { href: "/",          label: "Home" },
@@ -35,35 +35,36 @@ export default function Footer() {
             </p>
             {/* Social icons */}
             <div className="social-row" aria-label="Social links">
+              {/* Social links */}
               <div className="social-links">
-  <a
-    href="https://www.instagram.com/amoraweds4?igsh=MW1nNXMzc2w2bTM2ZQ=="
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram"
-    className="social-btn"
-  >
-    <Instagram size={18} />
-  </a>
+              <a
+                href="https://www.instagram.com/amoraweds4?igsh=YzdwMjdiNXQ1eDZm"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="social-btn"
+              >
+                <Instagram size={18} />
+              </a>
 
-  <a
-    href="https://wa.me/91XXXXXXXXXX"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp"
-    className="social-btn"
-  >
-    <MessageCircle size={18} />
-  </a>
+              <a
+                href="https://wa.me/91XXXXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="social-btn"
+              >
+                <MessageCircle size={18} />
+              </a>
 
-  <a
-    href="mailto:amoeraweds4@gmail.com"
-    aria-label="Email"
-    className="social-btn"
-  >
-    <Mail size={18} />
-  </a>
-</div>
+              <a
+                href="mailto:amoeraweds4@gmail.com"
+                aria-label="Email"
+                className="social-btn"
+              >
+                <Mail size={18} />
+              </a>
+            </div>
             </div>
           </div>
 
