@@ -5,13 +5,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const slides = [
-  "/templates/1.png",
-  "/templates/2.png",
-  "/templates/3.png",
-  "/templates/1.png",
-  "/templates/2.png",
-  "/templates/3.png",
-  
+  "/templates/1.jpg",
+  "/templates/2.jpg",
+  "/templates/3.jpg",
+  "/templates/4.jpg",
+  "/templates/5.jpg",
+  "/templates/6.jpg",
 ];
 
 export default function Hero360Carousel() {
@@ -20,107 +19,104 @@ export default function Hero360Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % slides.length);
-    }, 2500);
+    }, 2200);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden py-32 bg-[#faf7f2]">
-      {/* Background Glow */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[700px] h-[700px] rounded-full bg-pink-200/30 blur-[140px]" />
-      </div>
+    <section className="hero360">
+      <div className="hero360-glow" />
 
-      {/* Heading */}
-      <div className="relative z-10 text-center mb-20 px-6">
-        <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-4">
-          Explore Templates
+      <div className="hero360-header">
+        <p className="hero360-tag">
+          PREMIUM COLLECTION
         </p>
 
-        <h2 className="text-4xl md:text-6xl font-light text-neutral-900 leading-tight">
-          Immersive Wedding
+        <h2 className="hero360-title">
+          Explore Our
           <br />
-          Website Experiences
+          Wedding Templates
         </h2>
-
-        <p className="max-w-2xl mx-auto mt-6 text-neutral-600 text-lg">
-          Discover beautifully crafted wedding websites with elegant motion,
-          premium layouts, and unforgettable digital experiences.
-        </p>
       </div>
 
-      {/* 360 Carousel */}
-      <div className="relative h-[520px] w-full flex items-center justify-center perspective-[2500px]">
-        <div className="relative flex items-center justify-center w-full max-w-7xl h-full">
-          {slides.map((slide, index) => {
-            const offset =
-              (index - active + slides.length) % slides.length;
+      <div className="hero360-stage">
+        {slides.map((slide, index) => {
+          const diff =
+            (index - active + slides.length) % slides.length;
 
-            let position = offset;
+          let position = diff;
 
-            if (offset > slides.length / 2) {
-              position = offset - slides.length;
-            }
+          if (diff > slides.length / 2) {
+            position = diff - slides.length;
+          }
 
-            return (
-              <motion.div
-                key={index}
-                className="absolute"
-                animate={{
-                x: position * 185,
-                rotateY: position * -32,
-                scale: position === 0 ? 1 : 0.82,
-                opacity: Math.abs(position) > 3 ? 0 : 1,
+          const isCenter = position === 0;
+
+          return (
+            <motion.div
+              key={index}
+              className={`hero360-card ${
+                isCenter ? "active" : ""
+              }`}
+              animate={{
+                x:
+                  position === 0
+                    ? 0
+                    : position > 0
+                    ? position * 120
+                    : position * 120,
+
+                scale:
+                  position === 0
+                    ? 1
+                    : Math.abs(position) === 1
+                    ? 0.82
+                    : 0.64,
+
+                rotateY: position * -45,
+
+                z:
+                  position === 0
+                    ? 0
+                    : -220 * Math.abs(position),
+
+                opacity:
+                  Math.abs(position) > 2
+                    ? 0
+                    : position === 0
+                    ? 1
+                    : 0.65,
+
+                filter:
+                  position === 0
+                    ? "blur(0px)"
+                    : "blur(1.5px)",
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeInOut",
+              }}
+              style={{
                 zIndex: 100 - Math.abs(position),
-                }}
-                transition={{
-                  duration: 1,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                <div
-                  className={`
-                    relative overflow-hidden rounded-[32px]
-                    shadow-2xl border border-white/20
-                    backdrop-blur-xl
-                    transition-all duration-500
-                    ${
-                      position === 0
-                        ? "w-[290px] h-[560px]"
-                        : "w-[220px] h-[470px]"
-                    }
-                  `}
-                >
-                  <Image
-                    src={slide}
-                    alt={`Template ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                  />
+              }}
+            >
+              <Image
+                src={slide}
+                alt=""
+                fill
+                className="hero360-image"
+              />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <div className="hero360-overlay" />
 
-                  {/* Floating Label */}
-                  <div className="absolute bottom-5 left-5 text-white">
-                    <p className="text-sm uppercase tracking-widest opacity-80">
-                      AmoraWeds
-                    </p>
-
-                    <h3 className="text-xl font-light mt-1">
-                      Wedding Template
-                    </h3>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+              <div className="hero360-content">
+                <span>AMORAWEDS</span>
+                <h3>Luxury Invite</h3>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

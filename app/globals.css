@@ -43,241 +43,165 @@ button {
   font-family: var(--font-poppins);
 }
 
-/* ============================= */
-/* HERO 360 CAROUSEL */
-/* ============================= */
+/* ========================================= */
+/* HERO 360 */
+/* ========================================= */
 
-.hero-360-section {
+.hero360 {
   position: relative;
-  width: 100%;
+  padding: 120px 20px;
   overflow: hidden;
-  padding: 8rem 1.5rem;
   background:
-    radial-gradient(circle at top, rgba(255, 215, 220, 0.35), transparent 40%),
-    linear-gradient(to bottom, #faf7f2, #fffdf9);
+    radial-gradient(circle at top,
+      rgba(201,114,138,0.12),
+      transparent 45%),
+    #fffaf5;
 }
 
-.hero-360-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.hero-360-heading {
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
-.hero-360-tag {
-  font-size: 0.8rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: #9b8c82;
-  margin-bottom: 1rem;
-}
-
-.hero-360-title {
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  line-height: 1.1;
-  font-weight: 300;
-  color: #1c1c1c;
-  font-family: "Cormorant Garamond", serif;
-}
-
-.hero-360-sub {
-  max-width: 700px;
-  margin: 1.5rem auto 0;
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: #6d665f;
-}
-
-/* ============================= */
-/* CAROUSEL AREA */
-/* ============================= */
-
-.hero-360-stage {
-  position: relative;
-  height: 620px;
-  max-width: 980px;
-  margin: 0 auto;
-  padding-bottom: 10px;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
-  perspective: 2200px;
-  transform-style: preserve-3d;
-}
-
-.hero-360-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-/* ============================= */
-/* CARD */
-/* ============================= */
-
-.hero-360-card {
+.hero360-glow {
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  overflow: hidden;
-  border-radius: 32px;
-  transform-style: preserve-3d;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: rgba(201,114,138,0.12);
+  filter: blur(140px);
 
-  background: rgba(255, 255, 255, 0.1);
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.hero360-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 5;
+}
+
+.hero360-tag {
+  letter-spacing: 0.35em;
+  font-size: 12px;
+  color: #c9728a;
+  margin-bottom: 16px;
+}
+
+.hero360-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.05;
+  font-weight: 300;
+  color: #3a2c30;
+}
+
+.hero360-stage {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  height: 560px;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  perspective: 2400px;
+  transform-style: preserve-3d;
+}
+
+.hero360-card {
+  position: absolute;
+
+  width: 190px;
+  height: 380px;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  transform-style: preserve-3d;
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.12),
-    0 10px 30px rgba(255, 192, 203, 0.15);
+    0 25px 80px rgba(0,0,0,0.15);
 
-  transition:
-    width 0.5s ease,
-    height 0.5s ease,
-    opacity 0.5s ease;
-}
-.hero-360-card {
   will-change: transform;
+
+  left: 50%;
+  bottom: 0;
+
+  margin-left: -95px;
 }
-/* Active card */
-.hero-360-card.active {
-  width: 250px;
+
+.hero360-card.active {
+  width: 240px;
   height: 500px;
+
+  margin-left: -120px;
 }
 
-/* Side cards */
-.hero-360-card.side {
-  width: 170px;
-  height: 360px;
-  filter: brightness(0.92);
-}
-
-.hero-360-image {
-  width: 100%;
-  height: 100%;
+.hero360-image {
   object-fit: cover;
 }
 
-/* ============================= */
-/* OVERLAY */
-/* ============================= */
-
-.hero-360-overlay {
+.hero360-overlay {
   position: absolute;
   inset: 0;
 
   background:
     linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.05),
+      rgba(0,0,0,0.45),
       transparent
     );
 }
 
-.hero-360-content {
+.hero360-content {
   position: absolute;
-  bottom: 28px;
-  left: 24px;
+  bottom: 22px;
+  left: 20px;
+
   color: white;
 }
 
-.hero-360-brand {
-  font-size: 0.7rem;
+.hero360-content span {
+  font-size: 11px;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.8;
 }
 
-.hero-360-name {
-  margin-top: 0.5rem;
-  font-size: 1.4rem;
+.hero360-content h3 {
+  margin-top: 8px;
+
+  font-size: 24px;
+
+  font-family: 'Cormorant Garamond', serif;
+
   font-weight: 300;
-  font-family: "Cormorant Garamond", serif;
 }
-
-/* ============================= */
-/* GLOW BACKGROUND */
-/* ============================= */
-
-.hero-360-glow {
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  background: rgba(255, 192, 203, 0.22);
-  border-radius: 50%;
-  filter: blur(150px);
-
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
-
-/* ============================= */
-/* FLOATING ANIMATION */
-/* ============================= */
-
-@keyframes floatCard {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.hero-360-card.active {
-  animation: floatCard 5s ease-in-out infinite;
-}
-
-/* ============================= */
-/* MOBILE */
-/* ============================= */
 
 @media (max-width: 768px) {
-  .hero-360-section {
-    padding: 6rem 1rem;
+
+  .hero360-stage {
+    height: 430px;
   }
 
-  .hero-360-stage {
-    height: 500px;
-  }
-
-  .hero-360-card.active {
-    width: 190px;
-    height: 378px;
-  }
-
-  .hero-360-card.side {
+  .hero360-card {
     width: 130px;
-    height: 260px;
+    height: 250px;
+
+    margin-left: -65px;
   }
 
-  .hero-360-title {
-    font-size: 2.8rem;
+  .hero360-card.active {
+    width: 180px;
+    height: 350px;
+
+    margin-left: -90px;
   }
 
-  .hero-360-sub {
-    font-size: 0.95rem;
-    line-height: 1.7;
+  .hero360-title {
+    font-size: 2.5rem;
   }
 }
