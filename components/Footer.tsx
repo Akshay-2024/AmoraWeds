@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { InstagramIcon, Mail, MessageCircle } from "lucide-react"; // icons from lucide AS
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md"; // icons from  AS
 
 const NAV_LINKS = [
   { href: "/",          label: "Home" },
@@ -37,32 +38,27 @@ export default function Footer() {
             <div className="social-row" aria-label="Social links">
               {/* Social links */}
               <div className="social-links">
+             {/* Instagram */}
               <a
-                href="https://www.instagram.com/amoraweds4?igsh=YzdwMjdiNXQ1eDZm"
+                href="https://www.instagram.com/amoraweds4/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="social-btn"
               >
-                <InstagramIcon size={20} />
+                <FaInstagram size={22} />
               </a>
 
+              {/* WhatsApp */}
               <a
-                href="https://wa.me/91XXXXXXXXXX"
+                href="https://wa.me/919999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="social-btn"
               >
-                <MessageCircle size={20} />
+                <FaWhatsapp size={22} />
               </a>
 
-              <a
-                href="mailto:amoeraweds4@gmail.com"
-                aria-label="Email"
-                className="social-btn"
-              >
-                <Mail size={20} />
+              {/* Email */}
+              <a href="mailto:example@gmail.com">
+                <MdEmail size={22} />
               </a>
             </div>
             </div>
