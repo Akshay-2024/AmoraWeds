@@ -42,3 +42,232 @@ li,
 button {
   font-family: var(--font-poppins);
 }
+
+/* ============================= */
+/* HERO 360 CAROUSEL */
+/* ============================= */
+
+.hero-360-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 8rem 1.5rem;
+  background:
+    radial-gradient(circle at top, rgba(255, 215, 220, 0.35), transparent 40%),
+    linear-gradient(to bottom, #faf7f2, #fffdf9);
+}
+
+.hero-360-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-360-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.hero-360-tag {
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #9b8c82;
+  margin-bottom: 1rem;
+}
+
+.hero-360-title {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 1.1;
+  font-weight: 300;
+  color: #1c1c1c;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.hero-360-sub {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #6d665f;
+}
+
+/* ============================= */
+/* CAROUSEL AREA */
+/* ============================= */
+
+.hero-360-stage {
+  position: relative;
+  width: 100%;
+  height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2500px;
+  transform-style: preserve-3d;
+}
+
+.hero-360-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================= */
+/* CARD */
+/* ============================= */
+
+.hero-360-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 32px;
+  transform-style: preserve-3d;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 10px 30px rgba(255, 192, 203, 0.15);
+
+  transition:
+    width 0.5s ease,
+    height 0.5s ease,
+    opacity 0.5s ease;
+}
+
+/* Active card */
+.hero-360-card.active {
+  width: 300px;
+  height: 580px;
+}
+
+/* Side cards */
+.hero-360-card.side {
+  width: 220px;
+  height: 470px;
+  filter: brightness(0.92);
+}
+
+.hero-360-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
+.hero-360-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.05),
+      transparent
+    );
+}
+
+.hero-360-content {
+  position: absolute;
+  bottom: 28px;
+  left: 24px;
+  color: white;
+}
+
+.hero-360-brand {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.hero-360-name {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ============================= */
+/* GLOW BACKGROUND */
+/* ============================= */
+
+.hero-360-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: rgba(255, 192, 203, 0.22);
+  border-radius: 50%;
+  filter: blur(150px);
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* ============================= */
+/* FLOATING ANIMATION */
+/* ============================= */
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hero-360-card.active {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .hero-360-section {
+    padding: 6rem 1rem;
+  }
+
+  .hero-360-stage {
+    height: 500px;
+  }
+
+  .hero-360-card.active {
+    width: 210px;
+    height: 430px;
+  }
+
+  .hero-360-card.side {
+    width: 150px;
+    height: 320px;
+  }
+
+  .hero-360-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-360-sub {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
