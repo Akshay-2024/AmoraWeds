@@ -44,21 +44,21 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram size={22} />
+                <FaInstagram size={28} />
               </a>
-
+              &nbsp;&nbsp;
               {/* WhatsApp */}
               <a
                 href="https://wa.me/919999999999"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaWhatsapp size={22} />
+                <FaWhatsapp size={28} />
               </a>
-
+              &nbsp;&nbsp;
               {/* Email */}
               <a href="mailto:example@gmail.com">
-                <MdEmail size={22} />
+                <MdEmail size={28} />
               </a>
             </div>
             </div>
