@@ -8,9 +8,9 @@ const slides = [
   "/templates/1.png",
   "/templates/2.png",
   "/templates/3.png",
-  "/templates/4.png",
-  "/templates/5.png",
-  "/templates/6.png",
+  "/templates/1.png",
+  "/templates/2.png",
+  "/templates/3.png",
 ];
 
 export default function Hero360Carousel() {
@@ -64,8 +64,8 @@ export default function Hero360Carousel() {
                 position === 0
                   ? 0
                   : position > 0
-                  ? position * 135
-                  : position * 135,
+                  ? position * 155
+                  : position * 155,
 
               scale:
                 position === 0
