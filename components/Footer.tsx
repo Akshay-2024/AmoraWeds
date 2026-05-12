@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Mail, MessageCircle } from "lucide-react"; // icons from lucide AS
+import { InstagramIcon, Mail, MessageCircle } from "lucide-react"; // icons from lucide AS
 
 const NAV_LINKS = [
   { href: "/",          label: "Home" },
@@ -44,7 +44,7 @@ export default function Footer() {
                 aria-label="Instagram"
                 className="social-btn"
               >
-                <Instagram size={18} />
+                <InstagramIcon size={20} />
               </a>
 
               <a
@@ -54,7 +54,7 @@ export default function Footer() {
                 aria-label="WhatsApp"
                 className="social-btn"
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={20} />
               </a>
 
               <a
@@ -62,7 +62,7 @@ export default function Footer() {
                 aria-label="Email"
                 className="social-btn"
               >
-                <Mail size={18} />
+                <Mail size={20} />
               </a>
             </div>
             </div>
