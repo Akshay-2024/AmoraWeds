@@ -68,11 +68,11 @@ export default function Hero360Carousel() {
                 key={index}
                 className="absolute"
                 animate={{
-                  x: position * 240,
-                  scale: position === 0 ? 1 : 0.78,
-                  rotateY: position * -35,
-                  opacity: Math.abs(position) > 3 ? 0 : 1,
-                  zIndex: 100 - Math.abs(position),
+                x: position * 210,
+                rotateY: position * -32,
+                scale: position === 0 ? 1 : 0.82,
+                opacity: Math.abs(position) > 3 ? 0 : 1,
+                zIndex: 100 - Math.abs(position),
                 }}
                 transition={{
                   duration: 1,
