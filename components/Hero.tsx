@@ -53,7 +53,7 @@ export default function Hero() {
 
           <h1 className="hero-heading">
             Elegant<br />
-            <em className="hero-heading-em">Wedding</em><br />
+            <em className="hero-heading-em">Wedding Invitation</em><br />
             Websites
           </h1>
 
