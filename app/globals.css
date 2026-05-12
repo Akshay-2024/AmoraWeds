@@ -100,8 +100,8 @@ button {
 .hero-360-stage {
   position: relative;
   width: 100%;
-  height: 720px;
-  padding-bottom: 40px;
+  height: 650px;
+  padding-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,14 +144,14 @@ button {
 
 /* Active card */
 .hero-360-card.active {
-  width: 300px;
-  height: 580px;
+  width: 270px;
+  height: 520px;
 }
 
 /* Side cards */
 .hero-360-card.side {
-  width: 220px;
-  height: 470px;
+  width: 198px;
+  height: 414px;
   filter: brightness(0.92);
 }
 
@@ -254,13 +254,13 @@ button {
   }
 
   .hero-360-card.active {
-    width: 210px;
-    height: 430px;
+    width: 190px;
+    height: 378px;
   }
 
   .hero-360-card.side {
-    width: 150px;
-    height: 320px;
+    width: 130px;
+    height: 260px;
   }
 
   .hero-360-title {
