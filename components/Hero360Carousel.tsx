@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const slides = [
-  "/templates/1.jpg",
-  "/templates/2.jpg",
-  "/templates/3.jpg",
-  "/templates/4.jpg",
-  "/templates/5.jpg",
-  "/templates/6.jpg",
-  "/templates/7.jpg",
+  "/templates/1.png",
+  "/templates/2.png",
+  "/templates/3.png",
+  "/templates/1.png",
+  "/templates/2.png",
+  "/templates/3.png",
+  "/templates/1.png",
 ];
 
 export default function Hero360Carousel() {
