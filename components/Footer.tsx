@@ -37,7 +37,7 @@ export default function Footer() {
             <div className="social-row" aria-label="Social links">
               <div className="social-links">
   <a
-    href="https://instagram.com"
+    href="https://www.instagram.com/amoraweds4?igsh=MW1nNXMzc2w2bTM2ZQ=="
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Instagram"
