@@ -58,7 +58,7 @@ export default function Loading() {
 
         {/* Logo */}
         <div className="load-logo">
-          <span className="logo-amoera">Amoera</span><span className="logo-weds">Weds</span>
+          <span className="logo-amoera">Amora</span><span className="logo-weds">Weds</span>
         </div>
 
         {/* Divider */}
