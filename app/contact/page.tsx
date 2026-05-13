@@ -46,7 +46,7 @@ export default function ContactPage() {
                   <div className="info-icon">✆</div>
                   <div className="info-text">
                     <p className="info-label">Phone</p>
-                    <p className="info-value">+91 XXXXX XXXXX</p>
+                    <p className="info-value">+91 80752 98373</p>
                   </div>
                 </div>
 
@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://wa.me/91XXXXXXXXXX?text=Hi%20AmoeraWeds"
+                href="https://wa.me/918075298373?text=Hi%20AmoeraWeds"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-btn"
