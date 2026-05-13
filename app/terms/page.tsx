@@ -197,7 +197,7 @@ export default function TermsPage() {
             </address>
             <div className="tc-contact-actions">
               <a
-                href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                href="https://wa.me/918075298373"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="tc-contact-btn tc-contact-btn--wa"
