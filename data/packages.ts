@@ -12,7 +12,7 @@ export const packages = [
       "Small weddings, simple digital invitation needs, and budget-conscious families.",
 
     price:
-      "₹1000 - ₹1200",
+      "₹1200 - ₹1500",
 
     delivery:
       "2-3 Days",
@@ -32,7 +32,7 @@ export const packages = [
 
     addons: [
       "Countdown",
-      "Multiple Images (up to 3)",
+      "Multiple Images (up to 5)",
     ],
 
     demos: [
@@ -67,12 +67,12 @@ export const packages = [
       "Medium to large weddings and families wanting a premium presentation.",
 
     price:
-      "₹1500 - ₹1700",
+      "₹1800 - ₹2100",
 
     delivery:
       "2-4 Days",
 
-    themes: "1 Custom Theme",
+    themes: "2 Custom Theme",
 
     features: [
       "Animated Invitation Opening",
@@ -127,13 +127,13 @@ export const packages = [
       "Luxury weddings, destination weddings, NRI clients, and high-budget families.",
 
     price:
-      "₹2500 - ₹3000",
+      "₹2800 - ₹3200",
 
     delivery:
       "3-5 Days",
 
     themes:
-      "2 Custom Themes",
+      "Multiple Custom Themes",
 
     features: [
       "Animated Invitation Opening",
@@ -154,6 +154,7 @@ export const packages = [
     addons: [
       "WhatsApp Sharing Button",
       "RSVP",
+      
     ],
 
     demos: [

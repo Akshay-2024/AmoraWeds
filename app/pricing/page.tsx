@@ -90,7 +90,7 @@ export default function PricingPage() {
               We're happy to help you pick the right package — or build something bespoke just for you.
             </p>
             <a
-              href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+              href="https://wa.me/918075298373"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-wa-btn"

@@ -49,7 +49,7 @@ export default function Footer() {
               &nbsp;&nbsp;
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/918075298373"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -57,7 +57,7 @@ export default function Footer() {
               </a>
               &nbsp;&nbsp;
               {/* Email */}
-              <a href="mailto:example@gmail.com">
+              <a href="mailto:amoraweds4@gmail.com">
                 <MdEmail size={28} />
               </a>
             </div>
@@ -109,7 +109,7 @@ export default function Footer() {
               </li>
               <li className="contact-item">
                 <span className="contact-icon" aria-hidden="true">✆</span>
-                <a href="tel:+91XXXXXXXXXX" className="footer-link-plain">+91 XXXXX XXXXX</a>
+                <a href="tel:+918075298373" className="footer-link-plain">+91 80752 98373</a>
               </li>
               <li className="contact-item">
                 <span className="contact-icon" aria-hidden="true">✉</span>

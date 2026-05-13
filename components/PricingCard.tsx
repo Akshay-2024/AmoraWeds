@@ -87,7 +87,7 @@ export default function PricingCard({
 
       {/* ── CTA ── */}
       <a
-        href={`https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi AmoraWeds, I am interested in the ${title}`}
+        href={`https://wa.me/918075298373?text=Hi AmoraWeds, I am interested in the ${title}`}
         target="_blank"
         rel="noopener noreferrer"
         className={`pc-btn ${featured ? "pc-btn--featured" : ""}`}
