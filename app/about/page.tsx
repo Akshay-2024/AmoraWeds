@@ -5,14 +5,14 @@ export default function AboutPage() {
 
         <div className="text-center">
           <h1 className="text-5xl font-bold">
-            About AmoeraWeds
+            About AmoraWeds
           </h1>
         </div>
 
         <div className="mt-12 bg-white p-10 rounded-3xl shadow-xl">
 
           <p className="text-lg leading-9 text-gray-700">
-            AmoeraWeds is a premium wedding website
+            AmoraWeds is a premium wedding website
             creation startup that helps couples make
             their special day unforgettable online.
           </p>

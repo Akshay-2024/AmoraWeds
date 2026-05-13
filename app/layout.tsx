@@ -17,8 +17,8 @@ const poppins = Poppins({
 
 export const metadata = {
   title: {
-    default: "AmoeraWeds",
-    template: "%s | AmoeraWeds",
+    default: "AmoraWeds",
+    template: "%s | AmoraWeds",
   },
 
   description:
@@ -30,21 +30,21 @@ export const metadata = {
     "Digital Wedding Invitation",
     "Wedding Website India",
     "Wedding RSVP Website",
-    "AmoeraWeds",
+    "AmoraWeds",
   ],
 
   authors: [
     {
-      name: "AmoeraWeds",
+      name: "AmoraWeds",
     },
   ],
 
   openGraph: {
-    title: "AmoeraWeds",
+    title: "AmoraWeds",
     description:
       "Elegant wedding websites for modern couples.",
-    url: "https://amoeraweds.com",
-    siteName: "AmoeraWeds",
+    url: "https://amoraweds.com",
+    siteName: "AmoraWeds",
     locale: "en_IN",
     type: "website",
   },

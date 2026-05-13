@@ -57,7 +57,7 @@ export default function PortfolioPage() {
 
                 <p className="mt-3 text-gray-600">
                   Elegant custom wedding website
-                  designed by AmoeraWeds.
+                  designed by AmoraWeds.
                 </p>
               </div>
             </div>
