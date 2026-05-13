@@ -112,6 +112,10 @@ export default function Footer() {
                 <a href="tel:+918075298373" className="footer-link-plain">+91 80752 98373</a>
               </li>
               <li className="contact-item">
+                <span className="contact-icon" aria-hidden="true">✆</span>
+                <a href="tel:+919778160603" className="footer-link-plain">+91 97781 60603</a>
+              </li>
+              <li className="contact-item">
                 <span className="contact-icon" aria-hidden="true">✉</span>
                 <a href="mailto:amoraweds4@gmail.com" className="footer-link-plain">amoraweds4@gmail.com</a>
               </li>

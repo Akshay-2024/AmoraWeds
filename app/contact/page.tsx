@@ -47,6 +47,7 @@ export default function ContactPage() {
                   <div className="info-text">
                     <p className="info-label">Phone</p>
                     <p className="info-value">+91 80752 98373</p>
+                    <p className="info-value">+91 97781 60603</p>
                   </div>
                 </div>
 
@@ -57,7 +58,7 @@ export default function ContactPage() {
                   <div className="info-text">
                     <p className="info-label">Email</p>
                     <a href="mailto:amoeraweds4@gmail.com" className="info-value info-link">
-                      amoeraweds4@gmail.com
+                      amoraweds4@gmail.com
                     </a>
                   </div>
                 </div>

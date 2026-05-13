@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
     },
 
-    sitemap: "https://amoeraweds.com/sitemap.xml",
+    sitemap: "https://amoraweds.com/sitemap.xml",
   };
 }
